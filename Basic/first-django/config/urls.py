@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from demos.views import lotto
+from demos.views import lotto, home, input
 #lotto로 url 이름 변경
 urlpatterns = [
+    path('', home, name='home'), 
     path('admin/', admin.site.urls),
-    path('lotto/', lotto)
+    path('init', input, name='input'),
+    path('init/lotto', lotto, name='result'),
 
 ]

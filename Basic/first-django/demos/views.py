@@ -6,11 +6,17 @@ from django.shortcuts import render
 #form random import random은 안되고, 그냥 import는 되네?
 import random
 
+def home(request):
+        return render(request, 'index.html')
+
+def input(request):
+    return render(request, 'init.html')
+
 def lotto(request):
     
     #1. 집합은 리스트와 달리 중복을 허용하지 않는다. (입력값 없음-로또번호 45개 저장)
     number = set()
-
+    count = 0
     # 2. 계산
     # randint함수는 int(정수) 형으로 된 랜덤 한 값을 출력하는 함수
     #파라미터로 두가지 정수를 받으며, 각각 시작값과 끝값을 의미(포함)
@@ -28,3 +34,4 @@ def lotto(request):
     #render 함수는 request와 템플릿명은 필수로 들어가며, html에 넘겨줄 변수를 적을 수 있다.
     #Django에서는 {{}}를 통해 템플릿 변수를 쓸 수 있다.
     return render(request, 'lotto.html', {'lottonumber': number})
+
